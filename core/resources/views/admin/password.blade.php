@@ -40,19 +40,22 @@
                     <form action="{{ route('admin.password.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="form-group">
-                            <label>@lang('Password')</label>
-                            <input class="form-control" type="password" name="old_password" required>
-                        </div>
+
 
                         <div class="form-group">
                             <label>@lang('New Password')</label>
-                            <input class="form-control" type="password" name="password" required>
+                            <div class="input-group">
+                                <input class="form-control" type="password" name="password" required id="password">
+                                <button type="button" class="input-group-text toggle-password" data-target="#password"><i class="las la-eye"></i></button>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label>@lang('Confirm Password')</label>
-                            <input class="form-control" type="password" name="password_confirmation" required>
+                            <div class="input-group">
+                                <input class="form-control" type="password" name="password_confirmation" required id="password_confirmation">
+                                <button type="button" class="input-group-text toggle-password" data-target="#password_confirmation"><i class="las la-eye"></i></button>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn--primary w-100 btn-lg h-45">@lang('Submit')</button>
                     </form>
@@ -74,4 +77,22 @@
             border-top-right-radius:unset;
         }
     </style>
+@endpush
+
+@push('script')
+<script>
+    (function ($) {
+        "use strict";
+        $('.toggle-password').on('click', function() {
+            let target = $($(this).data('target'));
+            if(target.attr('type') === 'password') {
+                target.attr('type', 'text');
+                $(this).html('<i class="las la-eye-slash"></i>');
+            } else {
+                target.attr('type', 'password');
+                $(this).html('<i class="las la-eye"></i>');
+            }
+        });
+    })(jQuery);
+</script>
 @endpush
