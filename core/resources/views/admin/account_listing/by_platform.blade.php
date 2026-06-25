@@ -58,7 +58,7 @@
                                                     <i class="las la-pen"></i>@lang('Edit')
                                                 </button>
                                                 @if($account->status == Status::LISTING_ACTIVE)
-                                                    <button class="btn btn-outline--danger btn-sm confirmationBtn"
+                                                    <button class="btn btn-outline--warning btn-sm confirmationBtn"
                                                         data-question="@lang('Disable this account?')"
                                                         data-action="{{ route('admin.account.listing.status', $account->id) }}">
                                                         <i class="las la-eye-slash"></i>@lang('Disable')
@@ -70,6 +70,9 @@
                                                         <i class="las la-eye"></i>@lang('Enable')
                                                     </button>
                                                 @endif
+                                                <button class="btn btn-outline--danger btn-sm confirmationBtn" data-question="@lang('Are you sure to delete this account?')" data-action="{{ route('admin.account.listing.delete', $account->id) }}">
+                                                    <i class="las la-trash"></i>@lang('Delete')
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>

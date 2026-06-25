@@ -76,4 +76,12 @@ class AccountListingController extends Controller
     {
         return AccountListing::changeStatus($id);
     }
+
+    public function delete($id)
+    {
+        $account = AccountListing::findOrFail($id);
+        $account->delete();
+        $notify[] = ['success', 'Account deleted successfully'];
+        return back()->withNotify($notify);
+    }
 }

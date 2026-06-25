@@ -197,6 +197,7 @@ Route::middleware('admin')->group(function () {
         Route::post('store/{id}', 'store')->name('update');
         Route::get('details/{id}', 'details')->name('detail');
         Route::post('status/{id}', 'status')->name('status');
+        Route::post('delete/{id}', 'delete')->name('delete');
     });
 
     // Plans
