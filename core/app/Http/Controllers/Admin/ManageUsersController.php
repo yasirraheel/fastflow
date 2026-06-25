@@ -390,6 +390,14 @@ class ManageUsersController extends Controller
 
     }
 
+    public function delete($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        $notify[] = ['success','User deleted successfully'];
+        return back()->withNotify($notify);
+    }
+
 
     public function showNotificationSingleForm($id)
     {

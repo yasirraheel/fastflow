@@ -53,6 +53,7 @@ Route::middleware('admin')->group(function () {
     // Users Manager
     Route::controller('ManageUsersController')->name('users.')->prefix('users')->group(function(){
         Route::get('/', 'allUsers')->name('all');
+        Route::post('delete/{id}', 'delete')->name('delete');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
         Route::get('active', 'activeUsers')->name('active');
